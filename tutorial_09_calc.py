@@ -24,8 +24,7 @@ def clear():
 
 def evaluate():
     global equa
-    equa = str(eval(equation.get()))
-    equation.set(equa)
+    equation.set(str(eval(equation.get())))
     equa = ""
 
 
