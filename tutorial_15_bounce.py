@@ -22,8 +22,13 @@ class Ball:
         self.canvas.move(self.id, 245, 100)
 
     def draw(self):
-        pass
+        self.canvas.move(self.id, 0, -1)
 
 
 ball = Ball(canvas, 'red')
-root.mainloop()
+
+while 1:
+    ball.draw()
+    root.update_idletasks()
+    root.update()
+    time.sleep(0.01)
