@@ -7,6 +7,7 @@ class myWindow():
         self.root = tk.Tk()
         self.winWidth = 300
         self.winHeight = 300
+        self.step = 10
         self.canvas = tk.Canvas(self.root,
                                 width=self.winWidth,
                                 height=self.winHeight)
@@ -31,20 +32,28 @@ class myWindow():
         self.root.bind("s", self.moveDown)
 
     def moveRight(self, event):
-        self.canvas.move(1, 10, 0)
-        self.root.update()
+        if self.x + self.w/2 < self.winWidth:
+            self.canvas.move(1, self.step, 0)
+            self.root.update()
+            self.x += self.step
 
     def moveLeft(self, event):
-        self.canvas.move(1, -10, 0)
-        self.root.update()
+        if self.x - self.w/2 > 0:
+            self.canvas.move(1, -self.step, 0)
+            self.root.update()
+            self.x -= self.step
 
     def moveUp(self, event):
-        self.canvas.move(1, 0, -10)
-        self.root.update()
+        if self.y - self.h > 0:
+            self.canvas.move(1, 0, -self.step)
+            self.root.update()
+            self.y -= self.step
 
     def moveDown(self, event):
-        self.canvas.move(1, 0, 10)
-        self.root.update()
+        if self.y + self.h < self.winHeight:
+            self.canvas.move(1, 0, self.step)
+            self.root.update()
+            self.y += self.step
 
 
 window = myWindow()
