@@ -38,7 +38,7 @@ class Ball:
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
         pos = self.canvas.coords(self.id)   # [x1, y1, x2, y2]
-        if pos[1] <= 0 or self.hit_paddle(pos) == True:
+        if pos[1] <= 0 or self.hit_paddle(pos) is True:
             self.y *= -1
         elif pos[3] >= self.canvas_height:
             self.hit_bottom = True
@@ -75,7 +75,7 @@ ball = Ball(canvas, paddle, 'red')
 
 while 1:
     #    try:
-    if ball.hit_bottom == False:
+    if ball.hit_bottom is False:
         ball.draw()
         paddle.draw()
 #    except:
